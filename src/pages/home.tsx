@@ -7,13 +7,14 @@ interface minhaProps {
 
 export function Home(props:minhaProps) {
   const [valor, setValor] = useState(0);
-  const [texto, setTexto] = useState(String);
+  const [completed, setCompleted] = useState(false);
+  const [tarefa, setTarefa] = useState(String);
 
   useEffect(() => {
-    if (valor == 10) {
-      setTexto('Parabéns você clicou 10 vezes')
+    if (completed) {
+      setTarefa('Parabéns! você concluiu a tarefa!')
     }
-  },[valor])
+  },[completed])
 
   function handleClick() {
     setValor(valor + 1);
@@ -25,7 +26,8 @@ export function Home(props:minhaProps) {
       <p>{props.description}</p>
       <button className='w-20 border-solid border-2 border-[#000] rounded-lg' onClick={handleClick}>Soma 1</button>
       <p>O valor é: {valor}</p>
-      <p>{texto}</p>
+      <button className='w-20 border-solid border-2 border-[#000] rounded-lg' onClick={() => setCompleted(true)}>Concluir</button>
+      <p>{tarefa}</p>
     </div>
   )
 }
