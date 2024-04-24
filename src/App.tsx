@@ -4,7 +4,6 @@ import { Home } from './pages/home/Home';
 import { Login } from './pages/login/Login';
 import { Cadastro } from './pages/cadastro/Cadastro';
 import { AuthProvider } from './contexts/AuthContext';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ListaTemas } from './components/temas/listaTemas/ListaTemas';
 import { FormularioTema } from './components/temas/formularioTema/FormularioTema';
@@ -13,11 +12,14 @@ import { ListaPostagens } from './components/postagens/listaPostagem/ListaPostag
 import { FormularioPostagem } from './components/postagens/formularioPostagem/FormularioPostagem';
 import { DeletarPostagem } from './components/postagens/deletarPostagem/DeletarPostagem';
 import { Perfil } from './pages/perfil/perfil';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function App() {
   return (
     <>
-    <AuthProvider>
+      <AuthProvider>
+        <ToastContainer />
         <BrowserRouter>
           <Navbar />
           <div className='min-h-[80vh]'>
@@ -39,7 +41,7 @@ export function App() {
           </div>
           <Footer />
         </BrowserRouter>
-        </AuthProvider>
+      </AuthProvider>
     </>
   );
 }

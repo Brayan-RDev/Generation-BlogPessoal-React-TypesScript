@@ -2,17 +2,19 @@ import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthContext'
 import loginLogo from '../../assets/login.jpg'
+import { toastAlerta } from '../../utils/toastAlerta'
+
 export function Perfil() {
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const { usuario } = useContext(AuthContext)
+  const { usuario } = useContext(AuthContext)
 
-    useEffect(() => {
-        if (usuario.token === "") {
-            alert('Você precisa estar logado')
-            navigate("/login")
-        }
-    }, [usuario.token])
+  useEffect(() => {
+    if (usuario.token === "") {
+      toastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro')
+      navigate("/login")
+    }
+  }, [usuario.token])
     
   return (
     <div className='container mx-auto mt-4 rounded-2xl overflow-hidden'>
